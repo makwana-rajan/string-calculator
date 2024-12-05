@@ -40,4 +40,9 @@ describe("String calculator unit test cases", () => {
       expect(error?.message).toBe("negatives not allowed -2,-6");
     }
   });
+
+  test("Should return sum of multiple numbers and ignore number those are bigger than 1000", () => {
+    const intStr = "//+\n1+2000";
+    expect(add(intStr)).toBe(1);
+  });
 });

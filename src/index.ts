@@ -25,6 +25,6 @@ export const add = function (numbers: string) {
 
   // Perform addition operation from splited data and return answer
   return splitedString.reduce((prev, curr) => {
-    return prev + curr;
+    return curr <= 1000 ? prev + curr : prev;
   }, 0);
 };
