@@ -7,8 +7,15 @@ export const add = function (numbers: string) {
 
   // To check is string contains custom delimiter
   if (numbers.startsWith("//")) {
-    delimiter = numbers.charAt(2); // identify custom delimiter
     const newLineIndex = numbers.indexOf("\n"); // find index of new line so will continue to check string after new line
+    if (numbers.includes("[") && numbers.includes("]")) {
+      delimiter = numbers.substring(
+        numbers.indexOf("[") + 1,
+        numbers.indexOf("]"),
+      );
+    } else {
+      delimiter = numbers.substring(numbers.lastIndexOf("/") + 1, newLineIndex); // identify custom delimiter with n length
+    }
     numbers = numbers.substring(newLineIndex + 1); // consider string aftre new line to perform seperation operation
   }
 
