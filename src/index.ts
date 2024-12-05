@@ -9,10 +9,18 @@ export const add = function (numbers: string) {
   if (numbers.startsWith("//")) {
     const newLineIndex = numbers.indexOf("\n"); // find index of new line so will continue to check string after new line
     if (numbers.includes("[") && numbers.includes("]")) {
-      delimiter = numbers.substring(
-        numbers.indexOf("[") + 1,
-        numbers.indexOf("]"),
-      );
+      // Dynamic find multiple delimiters
+      delimiter = numbers
+        .split("[")
+        .filter((i) => i.includes("]"))
+        .map((i) => {
+          return ["*", "+", ".", "?"].includes(i.charAt(0))
+            ? "\\ " + i.charAt(0)
+            : i.charAt(0);
+        })
+        .join("|");
+
+      delimiter = new RegExp(delimiter, "g"); // string convert to regex pattern
     } else {
       delimiter = numbers.substring(numbers.lastIndexOf("/") + 1, newLineIndex); // identify custom delimiter with n length
     }

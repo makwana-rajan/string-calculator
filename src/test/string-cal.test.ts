@@ -50,4 +50,14 @@ describe("String calculator unit test cases", () => {
     const intStr = "//[***]\n1***2***3";
     expect(add(intStr)).toBe(6);
   });
+
+  test("Should return sum of multiple numbers with custom delimiter with different type of delimiter", () => {
+    const intStr = "//[*][%]\n1*2%3";
+    expect(add(intStr)).toBe(6);
+  });
+
+  test("Should return sum of multiple numbers with custom delimiter with any number of length with different type of delimiter", () => {
+    const intStr = "//[**][??]\n1**2??3";
+    expect(add(intStr)).toBe(6);
+  });
 });
