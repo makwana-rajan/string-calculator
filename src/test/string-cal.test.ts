@@ -20,4 +20,24 @@ describe("String calculator unit test cases", () => {
     const intStr = "//;\n1;2";
     expect(add(intStr)).toBe(3);
   });
+
+  test("Should throw error if negative number found", () => {
+    const intStr = "//;\n1;-2";
+    try {
+      add(intStr);
+      expect(1).toBe(0);
+    } catch (error: any) {
+      expect(error?.message).toBe("negatives not allowed");
+    }
+  });
+
+  test("Should throw error message with negative numbers if negative number found", () => {
+    const intStr = "//;\n1;-2;-6;9";
+    try {
+      add(intStr);
+      expect(1).toBe(0);
+    } catch (error: any) {
+      expect(error?.message).toBe("negatives not allowed -2,-6");
+    }
+  });
 });
