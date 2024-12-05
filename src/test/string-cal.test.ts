@@ -10,4 +10,9 @@ describe("String calculator unit test cases", () => {
     const intStr = "";
     expect(add(intStr)).toBe(0);
   });
+
+  test("Should return sum of multiple numbers which are seperated by commas and new lines", () => {
+    const intStr = "1\n2,3";
+    expect(add(intStr)).toBe(6);
+  });
 });

@@ -3,7 +3,7 @@ export const add = function (numbers: string) {
   if (!numbers) return 0;
 
   // extract numbers by spliting string
-  const splitedString = numbers.split(/,/);
+  const splitedString = numbers.split(/,|\n/);
 
   // Perform addition operation from splited data and return answer
   return splitedString.reduce((prev, curr) => {
