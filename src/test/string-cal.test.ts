@@ -15,4 +15,9 @@ describe("String calculator unit test cases", () => {
     const intStr = "1\n2,3";
     expect(add(intStr)).toBe(6);
   });
+
+  test("Should return sum of multiple numbers which are seperated by different delimiters and new lines", () => {
+    const intStr = "//;\n1;2";
+    expect(add(intStr)).toBe(3);
+  });
 });
